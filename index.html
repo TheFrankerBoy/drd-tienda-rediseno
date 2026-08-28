@@ -3,13 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Propuesta de rediseño de la tienda online de DRD SLL: buscador por referencia, stock real, precios con y sin IVA, pedido por lista y calculadora de portes. Demo, no es el sitio oficial.">
+<meta name="description" content="DRD SLL · Almacén de fontanería, riego, climatización y obra civil en Alcalá de Guadaíra. Más de 18.000 referencias con stock real, pedido por lista y entrega en 24–48 h en Andalucía.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#FF5C00">
-<meta property="og:title" content="Rediseño Tienda DRD · Propuesta">
-<meta property="og:description" content="Demo de rediseño para tienda.drdsll.com. No es el sitio oficial.">
-<title>Rediseño Tienda DRD</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%94%A7%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="DRD SLL · Material de fontanería, riego y climatización">
+<meta property="og:description" content="Más de 18.000 referencias con stock real. Busca por referencia, pide por lista y ten el material en obra en 24–48 h.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://thefrankerboy.github.io/drd-tienda-rediseno/">
+<meta property="og:image" content="https://thefrankerboy.github.io/drd-tienda-rediseno/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Tienda en línea de DRD SLL">
+<meta name="twitter:card" content="summary_large_image">
+<title>DRD SLL · Fontanería, riego y climatización</title>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
+<link rel="apple-touch-icon" href="img/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
@@ -55,11 +66,6 @@ button,input,select,textarea{font:inherit; color:inherit}
 .wrap{width:min(1440px, 100% - 48px); margin-inline:auto}
 section{padding:64px 0}
 
-/* ============ DEMO ============ */
-.demo-bar{background:var(--dark); color:var(--on-dark-2); font-size:12px}
-.demo-bar .wrap{display:flex; gap:10px; align-items:center; justify-content:center; padding:7px 0; flex-wrap:wrap; text-align:center}
-.demo-bar b{color:#fff; font-weight:600}
-.demo-tag{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em; background:var(--orange); color:#fff; padding:2px 8px; border-radius:2px; font-weight:600}
 
 /* ============ UTILITY BAR ============ */
 .util{background:var(--surface-2); border-bottom:1px solid var(--line); font-size:12.5px; color:var(--ink-2)}
@@ -649,6 +655,75 @@ body.ready .cover::before{opacity:.9} body.ready .cover::after{opacity:1}
   .cover-copy > *,.cover-art .fx,.cover-art .fx-chip{opacity:1 !important; transform:none !important}
 }
 
+/* ============ ACCESIBILIDAD ============ */
+.skip{
+  position:absolute; left:12px; top:-60px; z-index:200;
+  background:var(--orange); color:#fff; padding:11px 18px; border-radius:0 0 var(--r) var(--r);
+  font-weight:600; font-size:14px; transition:top .15s;
+}
+.skip:focus{top:0}
+
+/* ============ AVISO LEGAL DEL PIE ============ */
+.legal{border-top:1px solid var(--dark-line); padding:22px 0 6px}
+.legal h4{margin-bottom:10px}
+.legal p{font-size:12.5px; line-height:1.7; color:var(--on-dark-2); max-width:88ch}
+.legal p + p{margin-top:9px}
+.legal b{color:#fff; font-weight:600}
+
+/* ============ BARRA DE CLIENTE IDENTIFICADO ============ */
+.cliente-bar{background:var(--ok); color:#fff; font-size:13px; display:none}
+body.identificado .cliente-bar{display:block}
+.cliente-bar .wrap{display:flex; align-items:center; gap:14px; padding:9px 0; flex-wrap:wrap}
+.cliente-bar svg{width:16px; height:16px; flex:none}
+.cliente-bar b{font-weight:600}
+.cliente-bar .sp{flex:1}
+.cliente-bar button{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.38); color:#fff;
+  border-radius:var(--r); padding:4px 12px; font-size:12.5px; cursor:pointer}
+.cliente-bar button:hover{background:rgba(255,255,255,.28)}
+
+/* ============ FORMULARIOS DE VENTANA ============ */
+.mv-form{display:flex; flex-direction:column; gap:14px; margin-top:18px}
+.mv-form .inp{font-family:"IBM Plex Mono",monospace; letter-spacing:.06em; text-transform:uppercase}
+.mv-err{color:var(--bad); font-size:13px; font-weight:500; display:none}
+.mv-err.on{display:block}
+.mv-hint{background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r); padding:12px 14px;
+  font-size:12.5px; color:var(--ink-2); line-height:1.6}
+.mv-hint code{font-family:"IBM Plex Mono",monospace; background:#fff; border:1px solid var(--line-2);
+  padding:1px 6px; border-radius:2px; color:var(--ink); font-size:12px}
+
+/* ============ PRESUPUESTOS ============ */
+.pres-list{display:flex; flex-direction:column; gap:10px; margin-top:16px; max-height:52vh; overflow-y:auto}
+.pres{border:1px solid var(--line-2); border-radius:var(--r); padding:14px 16px}
+.pres-top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.pres-ref{font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:14px}
+.pres-fecha{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-3)}
+.pres-tot{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:16px}
+.pres-meta{font-size:12.5px; color:var(--ink-2); margin-top:5px}
+.pres-acc{display:flex; gap:8px; margin-top:11px; flex-wrap:wrap}
+.pres-acc button{border:1px solid var(--line-2); background:#fff; border-radius:var(--r); padding:6px 12px;
+  font-size:12.5px; cursor:pointer; color:var(--ink-2)}
+.pres-acc button:hover{border-color:var(--orange); color:var(--orange)}
+.pres-acc button.pri{background:var(--orange); border-color:var(--orange); color:#fff}
+.pres-acc button.pri:hover{background:var(--orange-2)}
+.pres-vacio{text-align:center; padding:40px 10px; color:var(--ink-2); font-size:14px}
+.pres-vacio b{display:block; font-family:"Archivo",sans-serif; font-size:17px; color:var(--ink); margin-bottom:6px}
+
+/* ============ CÓDIGO PROMOCIONAL ============ */
+.promo-row{display:grid; grid-template-columns:1fr auto; gap:8px; margin-bottom:13px}
+.promo-row .inp{padding:9px 11px; font-family:"IBM Plex Mono",monospace; font-size:12.5px;
+  text-transform:uppercase; letter-spacing:.05em}
+.promo-row button{border:1px solid var(--line-2); background:#fff; border-radius:var(--r);
+  padding:0 16px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap}
+.promo-row button:hover{border-color:var(--orange); color:var(--orange)}
+.promo-on{display:flex; align-items:center; gap:10px; background:var(--ok-bg); border:1px solid #BFE0CD;
+  border-radius:var(--r); padding:9px 12px; margin-bottom:13px; font-size:12.5px; color:var(--ok)}
+.promo-on b{font-family:"IBM Plex Mono",monospace}
+.promo-on button{margin-left:auto; background:none; border:0; color:var(--ok); cursor:pointer;
+  text-decoration:underline; font-size:11.5px; padding:0}
+.promo-err{color:var(--bad); font-size:12px; margin:-6px 0 11px; display:none}
+.promo-err.on{display:block}
+.dr-sum.dto span:last-child{color:var(--ok)}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width:1040px){
   .hero .wrap{grid-template-columns:1fr; gap:38px; padding:46px 0 54px}
@@ -705,15 +780,8 @@ body.ready .cover::before{opacity:.9} body.ready .cover::after{opacity:1}
 </head>
 <body>
 
+<a class="skip" href="#contenido">Saltar al contenido</a>
 <div class="progress" id="prog"></div>
-
-<!-- ============================ DEMO ============================ -->
-<div class="demo-bar">
-  <div class="wrap">
-    <span class="demo-tag">DEMO</span>
-    <span><b>Propuesta de rediseño</b> para DRD SLL · No es el sitio oficial · Stock y plazos de ejemplo</span>
-  </div>
-</div>
 
 <!-- ============================ UTILIDAD ============================ -->
 <div class="util">
@@ -773,6 +841,15 @@ body.ready .cover::before{opacity:.9} body.ready .cover::after{opacity:1}
   </div>
 </header>
 
+<div class="cliente-bar" id="clienteBar">
+  <div class="wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg>
+    <span>Sesión iniciada como <b id="cbNombre"></b> · tarifa de cliente aplicada <b id="cbDto"></b></span>
+    <span class="sp"></span>
+    <button id="cbSalir">Cerrar sesión</button>
+  </div>
+</div>
+
 <nav class="cats" id="catnav">
   <div class="wrap">
     <a href="#destacados" data-cat="todo">Todo el catálogo</a>
@@ -789,6 +866,7 @@ body.ready .cover::before{opacity:.9} body.ready .cover::after{opacity:1}
 </nav>
 
 <!-- ============================ PORTADA ============================ -->
+<main id="contenido">
 <section class="cover" id="top">
   <div class="wrap">
     <div class="cover-copy">
@@ -811,7 +889,7 @@ body.ready .cover::before{opacity:.9} body.ready .cover::after{opacity:1}
     <div class="cover-art" aria-hidden="true">
       <figure class="fx f1"><div class="fx-in">
         <span class="fx-tag">Outlet</span>
-        <img src="img/bomba-superficie-h-121m.jpg" alt="" width="620" height="620">
+        <img src="img/bomba-superficie-h-121m.jpg" alt="" width="620" height="620" fetchpriority="high" decoding="async">
         <div class="fx-ref">BOM-H121M</div>
         <div class="fx-nm">Bomba de superficie H 121M · 1 CV</div>
         <div class="fx-pr"><s>512,00 €</s>446,00 €</div>
@@ -894,7 +972,7 @@ body.ready .cover::before{opacity:.9} body.ready .cover::after{opacity:1}
         <span>PRO</span>
       </div>
       <div class="panel-body">
-        <p>Una línea por artículo. Pruébalo, funciona de verdad.</p>
+        <p>Una línea por artículo, con o sin cantidad.</p>
         <label class="f" for="qo">Referencia · cantidad</label>
         <textarea class="qo" id="qo" spellcheck="false">ALI-UNI x 12
 NIV-P40 x 40
@@ -990,7 +1068,6 @@ BOM-H121M x 1</textarea>
     </div>
 
     <div class="prod-grid" id="grid"></div>
-    <p class="note">* Fotos y precios reales del catálogo de DRD SLL. El stock, los plazos y las medidas son de ejemplo para la demo: en la tienda real saldrían de vuestro ERP.</p>
   </div>
 </section>
 
@@ -1023,24 +1100,24 @@ BOM-H121M x 1</textarea>
     </div>
 
     <div class="tool rv rv-r" id="profesional">
-      <h3>Lo que un instalador necesita y hoy no encuentra</h3>
-      <p>Cuatro cosas que convierten una web-catálogo en una tienda de la que se repite pedido.</p>
+      <h3>Cuenta de profesional</h3>
+      <p>Si trabajas con nosotros habitualmente, la tienda se adapta a cómo compras tú.</p>
       <div class="help-list" data-stagger="90">
         <div class="help-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6"/></svg>
-          <div><b>Ficha técnica y despiece descargables</b><span>PDF del fabricante en cada producto: diámetros, curvas de bomba, recambios.</span></div>
-        </div>
-        <div class="help-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
-          <div><b>Tarifa por cliente</b><span>Cada profesional entra y ve su descuento aplicado, sin llamar para preguntar precio.</span></div>
+          <div><b>Tu tarifa, ya aplicada</b><span>Entras y ves tu precio, con tu descuento puesto. Sin llamar para preguntar.</span></div>
         </div>
         <div class="help-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
-          <div><b>Repetir pedido en un clic</b><span>El histórico de albaranes convertido en botón. El 60 % de los pedidos son repeticiones.</span></div>
+          <div><b>Repite un pedido en un clic</b><span>Tu histórico de albaranes, listo para volver a pedir lo mismo.</span></div>
         </div>
         <div class="help-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
-          <div><b>Hecho para el móvil</b><span>Se compra a pie de obra, con guantes y una mano. La web actual no aguanta eso.</span></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6"/></svg>
+          <div><b>Ficha técnica en cada producto</b><span>Diámetros, curvas de bomba y despiece de recambios, para descargar.</span></div>
+        </div>
+        <div class="help-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18M6 3v4M18 3v4"/><rect x="3" y="6" width="18" height="15" rx="2"/></svg>
+          <div><b>Pago a 30 días</b><span>Con tu cuenta de cliente abierta, sin adelantar el dinero de la obra.</span></div>
         </div>
       </div>
     </div>
@@ -1084,72 +1161,21 @@ BOM-H121M x 1</textarea>
   </div>
 </section>
 
-<div class="ruler rv-plain"></div>
 
-<!-- ============================ PITCH ============================ -->
-<section class="pitch">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div>
-        <h2>Qué arregla este rediseño</h2>
-        <p>Todo lo de la izquierda está hoy en tienda.drdsll.com. Lo comprobamos el 27 de agosto de 2026 en la portada, el catálogo y las fichas.</p>
-      </div>
-    </div>
-    <div class="fix-table" data-stagger="70" data-fold="1">
-      <div class="fix-row head"><div>#</div><div>Lo que pasa hoy</div><div>Lo que hace esta propuesta</div></div>
-
-      <div class="fix-row"><div class="fix-n">01</div>
-        <div class="fix-prob"><b>El menú de categorías tapa la portada</b>El desplegable se queda abierto sobre el carrusel y oculta la mitad del contenido nada más entrar.</div>
-        <div class="fix-sol"><b>Navegación fija y predecible</b>Barra de familias siempre visible, sin capas que se solapen. El contenido nunca queda debajo del menú.</div></div>
-
-      <div class="fix-row"><div class="fix-n">02</div>
-        <div class="fix-prob"><b>Una sección se llama «DATE ADD»</b>Un campo de la base de datos sin traducir, en inglés, como título visible de un bloque de productos.</div>
-        <div class="fix-sol"><b>Secciones con nombre de tienda</b>«Outlet y más vendidos», «Novedades», «Tu último pedido». Escritas para el cliente, no para el gestor.</div></div>
-
-      <div class="fix-row"><div class="fix-n">03</div>
-        <div class="fix-prob"><b>Se anuncian productos «fuera de stock»</b>La portada destaca artículos que no se pueden comprar. El cliente hace clic y se va.</div>
-        <div class="fix-sol"><b>Stock real en cada ficha</b>Unidades disponibles, aviso de últimas unidades y fecha de reposición cuando no hay.</div></div>
-
-      <div class="fix-row"><div class="fix-n">04</div>
-        <div class="fix-prob"><b>Buscar por referencia no funciona bien</b>El profesional llega con un código o una medida en la mano; el buscador espera nombres comerciales.</div>
-        <div class="fix-sol"><b>Buscador por referencia y medida</b>Resultados desde la primera letra, con Ø, presión y material. Es la función más usada de la tienda.</div></div>
-
-      <div class="fix-row"><div class="fix-n">05</div>
-        <div class="fix-prob"><b>Los portes son un PDF</b>«CONDICIONES_DE_PORTES» descargable. El comprador no sabe lo que paga hasta el final.</div>
-        <div class="fix-sol"><b>Portes calculados en pantalla</b>Coste por destino y cuánto falta para el envío gratis, visible desde la ficha y desde el carrito.</div></div>
-
-      <div class="fix-row"><div class="fix-n">06</div>
-        <div class="fix-prob"><b>El «OUTLET» va quemado en la foto</b>El rótulo está pintado dentro del JPG del fabricante. No se puede quitar, ni filtrar, ni traducir, y ensucia la ficha.</div>
-        <div class="fix-sol"><b>Etiqueta de verdad, foto limpia</b>La foto queda limpia y el «Outlet» pasa a ser una etiqueta del sistema: se filtra, se ordena y se quita sola cuando acaba la oferta.</div></div>
-
-      <div class="fix-row"><div class="fix-n">07</div>
-        <div class="fix-prob"><b>El diseño está anclado en 2014</b>Contenido estrecho en el centro con dos franjas vacías, tipografías diminutas, Google+ en el pie y «© 2024».</div>
-        <div class="fix-sol"><b>Interfaz actual y a ancho completo</b>Rejilla que aprovecha la pantalla, jerarquía tipográfica legible y pie mantenido.</div></div>
-
-      <div class="fix-row"><div class="fix-n">08</div>
-        <div class="fix-prob"><b>Nada distingue al profesional</b>Mismo precio y misma experiencia para el instalador que compra cada semana y para quien entra una vez.</div>
-        <div class="fix-sol"><b>Área profesional de verdad</b>Tarifa propia, pedido por lista de referencias, repetición de albaranes y pago a 30 días.</div></div>
-
-      <div class="fix-row"><div class="fix-n">09</div>
-        <div class="fix-prob"><b>En el móvil se compra mal</b>Textos de 11 px, botones pequeños y menús pensados para ratón, cuando el pedido se hace en la obra.</div>
-        <div class="fix-sol"><b>Móvil primero</b>Áreas de toque grandes, buscador a pantalla completa y pedido en tres toques.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ CTA ============================ -->
 <section class="cta" id="contacto">
   <div class="wrap rv rv-s">
-    <h2>¿Lo vemos con vuestro catálogo real?</h2>
-    <p>Esta demo funciona con doce productos y las fotos de vuestra propia tienda. Con un volcado de vuestro ERP la tenéis navegable con las 18.000 referencias en dos semanas.</p>
+    <h2>¿No encuentras la referencia?</h2>
+    <p>Llámanos y te decimos en el momento si lo tenemos, cuánto vale y cuándo lo tienes en obra. Al teléfono hay alguien que conoce el material.</p>
     <div class="cta-btns">
-      <button class="btn dark" id="ctaDemo">Pedir la demo con vuestro catálogo</button>
-      <a class="btn ghost" href="#destacados">Ver el informe completo de mejoras</a>
+      <a class="btn dark" href="tel:+34954475942">Llamar al 954 475 942</a>
+      <a class="btn ghost" href="#pedido">Pedir por lista de referencias</a>
     </div>
   </div>
 </section>
 
 <!-- ============================ PIE ============================ -->
+</main>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid" data-stagger="90">
@@ -1174,8 +1200,8 @@ BOM-H121M x 1</textarea>
           <a href="#portes">Portes y plazos</a>
           <a href="#portes">Devoluciones</a>
           <a href="#portes">Formas de pago</a>
-          <a href="#contacto">Aviso legal</a>
-          <a href="#contacto">Privacidad y cookies</a>
+          <a href="#legal">Aviso legal</a>
+          <a href="#legal">Privacidad y cookies</a>
         </div>
       </div>
       <div>
@@ -1190,8 +1216,18 @@ BOM-H121M x 1</textarea>
         </div>
       </div>
     </div>
+    <div class="legal" id="legal">
+      <h4>Aviso legal y privacidad</h4>
+      <p>DRD SLL · Ctra. Sevilla–Málaga km 5, Pol. Ind. La Red, C/ La Red Uno 17, 41500 Alcalá de Guadaíra (Sevilla).
+      Los precios se muestran sin IVA salvo que se indique lo contrario. Las existencias reflejan el material disponible
+      en almacén en el momento de la consulta.</p>
+      <p><b>Esta web no utiliza cookies ni recopila datos personales.</b> El pedido en curso se guarda únicamente en
+      este dispositivo y desaparece al borrar los datos del navegador.</p>
+      <p class="mono" style="opacity:.65; margin-top:12px">Versión de demostración alojada fuera del dominio de DRD SLL, con datos de ejemplo.</p>
+    </div>
+
     <div class="foot-bottom">
-      <span>© 2026 DRD SLL · Propuesta de rediseño, no es el sitio oficial</span>
+      <span>© 2026 DRD SLL · Todos los derechos reservados</span>
       <div class="pay"><span>VISA</span><span>MASTERCARD</span><span>BIZUM</span><span>TRANSFERENCIA</span><span>CUENTA 30 DÍAS</span></div>
     </div>
   </div>
@@ -1214,7 +1250,7 @@ BOM-H121M x 1</textarea>
 <!-- ============================ CARRITO ============================ -->
 <div class="scrim" id="scrim"></div>
 
-<aside class="drawer" id="drawer" aria-label="Tu pedido" aria-hidden="true">
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Tu pedido" aria-hidden="true">
   <div class="dr-head">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M2 3h3l2.4 12.3a2 2 0 0 0 2 1.7h8.5a2 2 0 0 0 2-1.6L21.5 7H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
     <h3>Tu pedido</h3>
@@ -1234,7 +1270,19 @@ BOM-H121M x 1</textarea>
         <option value="recogida">Recogida en almacén</option>
       </select>
     </div>
+    <div class="promo-row" id="promoRow">
+      <input class="inp" id="promoIn" type="text" placeholder="Código promocional" autocomplete="off" aria-label="Código promocional">
+      <button id="promoBtn">Aplicar</button>
+    </div>
+    <p class="promo-err" id="promoErr"></p>
+    <div class="promo-on" id="promoOn" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="width:15px;height:15px;flex:none"><path d="m5 12 5 5L19 7"/></svg>
+      <span><b id="promoCod"></b> · <span id="promoTxt"></span></span>
+      <button id="promoQuitar">Quitar</button>
+    </div>
+
     <div class="dr-sum"><span>Base imponible</span><span id="drBase">0,00 €</span></div>
+    <div class="dr-sum dto" id="drDtoRow" hidden><span id="drDtoTxt">Descuento</span><span id="drDto">0,00 €</span></div>
     <div class="dr-sum"><span>IVA 21 %</span><span id="drIva">0,00 €</span></div>
     <div class="dr-sum" id="drPortesRow"><span>Portes</span><span id="drPortes">—</span></div>
     <div class="dr-tot"><span>Total</span><b id="drTotal">0,00 €</b></div>
@@ -1244,10 +1292,50 @@ BOM-H121M x 1</textarea>
     </p>
     <div class="dr-btns">
       <button class="btn" id="drGo">Finalizar pedido</button>
-      <button class="btn ghost" id="drCsv" title="Descargar el presupuesto en CSV">Presupuesto</button>
+      <button class="btn ghost" id="drGuardar">Guardar presupuesto</button>
     </div>
   </div>
 </aside>
+
+<!-- ============================ ACCESO DE CLIENTE ============================ -->
+<div class="modal" id="login" role="dialog" aria-modal="true" aria-labelledby="loginTit">
+  <div class="modal-card" style="width:min(460px,100%)">
+    <div class="mv-body">
+      <button class="mv-x" id="loginX" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="mv-ref">Área profesional</div>
+      <h3 id="loginTit">Acceso de cliente</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin-top:8px">Entra con tu código de cliente y verás tu tarifa aplicada en todo el catálogo, tus presupuestos y tu pago a 30 días.</p>
+      <form class="mv-form" id="loginForm">
+        <div>
+          <label class="f" for="loginCod">Código de cliente</label>
+          <input class="inp" id="loginCod" type="text" placeholder="DRD-0000" autocomplete="off" spellcheck="false" required>
+        </div>
+        <p class="mv-err" id="loginErr">Ese código no consta. Revísalo en tu último albarán.</p>
+        <button class="btn block" type="submit">Entrar</button>
+      </form>
+      <div class="mv-hint" style="margin-top:16px">
+        ¿No tienes código? Pídelo en el mostrador o llama al 954 475 942.<br>
+        Para probar: <code>DRD-2041</code> o <code>DRD-1187</code>.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PRESUPUESTOS ============================ -->
+<div class="modal" id="presuWin" role="dialog" aria-modal="true" aria-labelledby="presuTit">
+  <div class="modal-card" style="width:min(620px,100%)">
+    <div class="mv-body">
+      <button class="mv-x" id="presuX" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="mv-ref">Tus presupuestos</div>
+      <h3 id="presuTit">Presupuestos guardados</h3>
+      <div class="pres-list" id="presuList"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ============================ FICHA RÁPIDA ============================ -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mvName">
@@ -1315,10 +1403,41 @@ BOM-H121M x 1</textarea>
                  riego:'Agricultura y riego', piscina:'Piscina', clima:'Climatización', pci:'Contraincendios'};
 
   var IVA = 0.21, conIva = false, cat = 'todo', onlyStock = false, orden = 'rel';
+
+  /* ---- clientes con tarifa concertada ---- */
+  var CLIENTES = {
+    'DRD-2041': {nombre:'Instalaciones Rivas SL', dto:0.12, pago:'30 días'},
+    'DRD-1187': {nombre:'Climatiza Sur SC',       dto:0.08, pago:'30 días'},
+    'DRD-3355': {nombre:'Riegos del Aljarafe',    dto:0.15, pago:'contado'}
+  };
+
+  /* ---- códigos promocionales ---- */
+  var PROMOS = {
+    'BIENVENIDA10': {tipo:'pct',    valor:0.10, txt:'10 % en tu primer pedido'},
+    'OBRA5':        {tipo:'pct',    valor:0.05, txt:'5 % de descuento'},
+    'PORTESGRATIS': {tipo:'portes', valor:0,    txt:'portes gratis, sin mínimo'}
+  };
+
+  function leer(llave, porDefecto){
+    try{ var v = JSON.parse(localStorage.getItem(llave)); return v === null ? porDefecto : v; }
+    catch(e){ return porDefecto; }
+  }
+  function escribir(llave, valor){
+    try{ localStorage.setItem(llave, JSON.stringify(valor)); }catch(e){}
+  }
+
+  var sesion = leer('drd.sesion.v1', null);
+  if(sesion && !CLIENTES[sesion.cod]) sesion = null;
+  var promo  = leer('drd.promo.v1', null);
+  if(promo && !PROMOS[promo]) promo = null;
+  var presupuestos = leer('drd.presupuestos.v1', []);
+
+  /* precio de venta: la tarifa del cliente se aplica antes que nada */
+  function pvp(v){ return sesion ? v * (1 - CLIENTES[sesion.cod].dto) : v; }
   var animateNext = true;   // las fichas entran en cascada al filtrar, no al tocar el carrito
 
   function eur(v){ return v.toFixed(2).replace('.', ',') + ' €'; }
-  function precio(v){ return conIva ? v * (1 + IVA) : v; }
+  function precio(v){ var p = pvp(v); return conIva ? p * (1 + IVA) : p; }
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function byRef(r){ for(var i=0;i<P.length;i++){ if(P[i].ref === r) return P[i]; } return null; }
 
@@ -1338,7 +1457,23 @@ BOM-H121M x 1</textarea>
   }
 
   /* ---------------- carrito ---------------- */
-  var cart = {};   // ref -> unidades
+  /* el pedido se guarda en el propio navegador: recargar no lo pierde.
+     Puede fallar (ventana privada, datos bloqueados), asi que va protegido. */
+  var LLAVE = 'drd.pedido.v1';
+  var cart = (function(){
+    try{
+      var g = JSON.parse(localStorage.getItem(LLAVE) || '{}');
+      var limpio = {};
+      for(var k in g){
+        var n = parseInt(g[k], 10);
+        if(byRef(k) && n > 0) limpio[k] = n;
+      }
+      return limpio;
+    }catch(e){ return {}; }
+  })();
+  function guardar(){
+    try{ localStorage.setItem(LLAVE, JSON.stringify(cart)); }catch(e){}
+  }
 
   function cartLines(){
     var out = [];
@@ -1387,7 +1522,9 @@ BOM-H121M x 1</textarea>
   }
 
   function cardHTML(x){
-    var sold = x.old ? '<span class="price-old">' + eur(precio(x.old)) + '</span>' : '';
+    var tarifa = sesion && !x.old
+      ? '<span class="price-old">' + eur(conIva ? x.p * (1 + IVA) : x.p) + '</span>' : '';
+    var sold = (x.old ? '<span class="price-old">' + eur(precio(x.old)) + '</span>' : '') + tarifa;
     var flag = x.f ? '<span class="flag ' + x.f + '">' + (x.f === 'outlet' ? 'Outlet' : 'Novedad') + '</span>' : '';
     var dto  = x.old ? '<span class="disc">-' + Math.round((1 - x.p / x.old) * 100) + ' %</span>' : '';
     var mine = cart[x.ref] ? '<span class="in-cart">' + cart[x.ref] + ' en el pedido</span>' : '';
@@ -1505,19 +1642,41 @@ BOM-H121M x 1</textarea>
   var drPortesRow = document.getElementById('drPortesRow');
   var cc = document.getElementById('cartCount');
 
+  /* al abrir una ventana se recuerda quien la abrio para devolverle el foco */
+  var focoPrevio = null;
+  var FOCABLES = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  function atrapaFoco(caja, e){
+    if(e.key !== 'Tab') return;
+    var l = caja.querySelectorAll(FOCABLES);
+    if(!l.length) return;
+    var primero = l[0], ultimo = l[l.length - 1];
+    if(e.shiftKey && document.activeElement === primero){ e.preventDefault(); ultimo.focus(); }
+    else if(!e.shiftKey && document.activeElement === ultimo){ e.preventDefault(); primero.focus(); }
+  }
+
   function openDrawer(){
+    focoPrevio = document.activeElement;
     drawer.classList.add('on'); scrim.classList.add('on');
     drawer.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
+    var f = drawer.querySelector(FOCABLES);
+    if(f) f.focus();
   }
   function closeDrawer(){
     drawer.classList.remove('on'); scrim.classList.remove('on');
     drawer.setAttribute('aria-hidden','true');
     document.body.style.overflow = '';
+    if(focoPrevio && focoPrevio.focus){ focoPrevio.focus(); focoPrevio = null; }
   }
+  drawer.addEventListener('keydown', function(e){ atrapaFoco(drawer, e); });
   document.getElementById('cartBtn').addEventListener('click', openDrawer);
   document.getElementById('drX').addEventListener('click', closeDrawer);
-  scrim.addEventListener('click', function(){ closeDrawer(); closeModal(); });
+  scrim.addEventListener('click', function(){
+    closeDrawer(); closeModal();
+    cerrarVentana(document.getElementById('login'));
+    cerrarVentana(document.getElementById('presuWin'));
+  });
 
   function renderDrawer(){
     var l = cartLines();
@@ -1540,18 +1699,32 @@ BOM-H121M x 1</textarea>
             '</div>' +
           '</div>' +
           '<div class="dl-right">' +
-            '<span class="dl-sub">' + eur(it.p.p * it.n) + '</span>' +
-            '<span class="dl-unit">' + eur(it.p.p) + ' / ud.</span>' +
+            '<span class="dl-sub">' + eur(pvp(it.p.p) * it.n) + '</span>' +
+            '<span class="dl-unit">' + eur(pvp(it.p.p)) + ' / ud.</span>' +
             '<button class="dl-del" data-del="' + it.p.ref + '">Quitar</button>' +
           '</div></div>';
       }).join('');
     }
 
-    var base = l.reduce(function(a, it){ return a + it.p.p * it.n; }, 0);
+    var bruto = l.reduce(function(a, it){ return a + pvp(it.p.p) * it.n; }, 0);
+    var p = promo ? PROMOS[promo] : null;
+    var dto = (p && p.tipo === 'pct') ? bruto * p.valor : 0;
+    var base = bruto - dto;
+
     var t = TARIFA[drZona.value];
-    var libre = base >= t.min || !t.coste;
-    var portes = (base === 0) ? 0 : (libre ? 0 : t.coste);
+    var portesGratis = (p && p.tipo === 'portes') || base >= t.min || !t.coste;
+    var libre = portesGratis;
+    var portes = (bruto === 0) ? 0 : (portesGratis ? 0 : t.coste);
     var iva = (base + portes) * IVA;
+
+    var drDtoRow = document.getElementById('drDtoRow');
+    if(dto > 0){
+      drDtoRow.hidden = false;
+      document.getElementById('drDtoTxt').textContent = 'Descuento ' + promo;
+      document.getElementById('drDto').textContent = '−' + eur(dto);
+    }else{
+      drDtoRow.hidden = true;
+    }
 
     drBase.textContent  = eur(base);
     drIvaEl.textContent = eur(iva);
@@ -1559,15 +1732,19 @@ BOM-H121M x 1</textarea>
     drPortesRow.classList.toggle('free', base > 0 && libre);
     drTotal.textContent = eur(base + portes + iva);
 
-    if(!base){
+    if(!bruto){
       drMsg.textContent = 'Añade material y te digo al momento cuánto falta para los portes gratis.';
     }else if(drZona.value === 'recogida'){
       drMsg.textContent = 'Recoges en Ctra. Sevilla–Málaga km 5. Te avisamos por WhatsApp en cuanto esté preparado.';
+    }else if(p && p.tipo === 'portes'){
+      drMsg.textContent = 'Portes gratis con el código ' + promo + '. Entrega en 24–48 h.';
     }else if(libre){
       drMsg.textContent = 'Portes gratis para ' + t.txt + '. Entrega en 24–48 h.';
     }else{
       drMsg.textContent = 'Te faltan ' + eur(t.min - base) + ' para que los portes salgan gratis a ' + t.txt + '.';
     }
+
+    pintaPromo();
   }
 
   drBody.addEventListener('click', function(e){
@@ -1586,29 +1763,141 @@ BOM-H121M x 1</textarea>
     say('En la tienda real, aquí entrarías en pago o en tu cuenta a 30 días');
   });
 
-  document.getElementById('drCsv').addEventListener('click', function(){
+  /* ==================== CÓDIGO PROMOCIONAL ==================== */
+  var promoIn = document.getElementById('promoIn'), promoOn = document.getElementById('promoOn');
+  var promoErr = document.getElementById('promoErr'), promoRow = document.getElementById('promoRow');
+
+  function pintaPromo(){
+    if(promo && PROMOS[promo]){
+      promoRow.style.display = 'none';
+      promoOn.hidden = false;
+      document.getElementById('promoCod').textContent = promo;
+      document.getElementById('promoTxt').textContent = PROMOS[promo].txt;
+    }else{
+      promoRow.style.display = '';
+      promoOn.hidden = true;
+    }
+  }
+  function aplicaPromo(){
+    var c = (promoIn.value || '').trim().toUpperCase();
+    if(!c) return;
+    if(!PROMOS[c]){
+      promoErr.textContent = 'El código ' + c + ' no es válido o ha caducado.';
+      promoErr.classList.add('on');
+      return;
+    }
+    promo = c; escribir('drd.promo.v1', promo);
+    promoErr.classList.remove('on'); promoIn.value = '';
+    say('Código ' + c + ' aplicado: ' + PROMOS[c].txt);
+    renderDrawer();
+  }
+  document.getElementById('promoBtn').addEventListener('click', aplicaPromo);
+  promoIn.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); aplicaPromo(); } });
+  promoIn.addEventListener('input', function(){ promoErr.classList.remove('on'); });
+  document.getElementById('promoQuitar').addEventListener('click', function(){
+    promo = null; escribir('drd.promo.v1', null); renderDrawer(); say('Código retirado');
+  });
+
+  /* ==================== PRESUPUESTOS ==================== */
+  var presuWin = document.getElementById('presuWin');
+
+  function totalesActuales(){
     var l = cartLines();
-    if(!l.length){ say('Añade material para generar el presupuesto'); return; }
-    var rows = [['Referencia','Descripción','Marca','Uds.','Precio ud. sin IVA','Subtotal sin IVA']];
-    l.forEach(function(it){
-      rows.push([it.p.ref, it.p.n, it.p.marca, it.n,
-                 it.p.p.toFixed(2).replace('.', ','), (it.p.p * it.n).toFixed(2).replace('.', ',')]);
+    var bruto = l.reduce(function(a, it){ return a + pvp(it.p.p) * it.n; }, 0);
+    var p = promo ? PROMOS[promo] : null;
+    var dto = (p && p.tipo === 'pct') ? bruto * p.valor : 0;
+    return {lineas:l, bruto:bruto, dto:dto, base:bruto - dto};
+  }
+
+  function guardarPresupuesto(){
+    var t = totalesActuales();
+    if(!t.lineas.length){ say('Añade material para guardar un presupuesto'); return; }
+    var n = presupuestos.length + 1;
+    var hoy = new Date();
+    var caduca = new Date(hoy.getTime() + 15 * 864e5);
+    presupuestos.unshift({
+      ref: 'PRE-' + hoy.getFullYear() + '-' + ('000' + n).slice(-4),
+      fecha: hoy.toLocaleDateString('es-ES'),
+      caduca: caduca.toLocaleDateString('es-ES'),
+      cliente: sesion ? CLIENTES[sesion.cod].nombre : null,
+      promo: promo,
+      lineas: t.lineas.map(function(it){ return {ref:it.p.ref, n:it.n, pu:pvp(it.p.p)}; }),
+      base: t.base
     });
-    var base = l.reduce(function(a, it){ return a + it.p.p * it.n; }, 0);
-    rows.push([]);
-    rows.push(['', '', '', '', 'Base imponible', base.toFixed(2).replace('.', ',')]);
-    rows.push(['', '', '', '', 'IVA 21 %', (base * IVA).toFixed(2).replace('.', ',')]);
-    rows.push(['', '', '', '', 'Total', (base * (1 + IVA)).toFixed(2).replace('.', ',')]);
-    var csv = '﻿' + rows.map(function(r){
-      return r.map(function(c){ return '"' + String(c).replace(/"/g, '""') + '"'; }).join(';');
+    escribir('drd.presupuestos.v1', presupuestos);
+    say('Presupuesto ' + presupuestos[0].ref + ' guardado · válido 15 días');
+    renderPresupuestos();
+  }
+
+  function renderPresupuestos(){
+    var caja = document.getElementById('presuList');
+    if(!presupuestos.length){
+      caja.innerHTML = '<div class="pres-vacio"><b>Todavía no tienes presupuestos</b>' +
+        'Monta un pedido y pulsa «Guardar presupuesto» para conservarlo aquí.</div>';
+      return;
+    }
+    caja.innerHTML = presupuestos.map(function(q, i){
+      var uds = q.lineas.reduce(function(a, x){ return a + x.n; }, 0);
+      return '<div class="pres">' +
+        '<div class="pres-top"><span class="pres-ref">' + q.ref + '</span>' +
+        '<span class="pres-fecha">' + q.fecha + ' · válido hasta ' + q.caduca + '</span>' +
+        '<span class="pres-tot">' + eur(q.base) + '</span></div>' +
+        '<div class="pres-meta">' + q.lineas.length + ' líneas · ' + uds + ' uds.' +
+        (q.cliente ? ' · ' + esc(q.cliente) : '') +
+        (q.promo ? ' · código ' + q.promo : '') + ' · IVA no incluido</div>' +
+        '<div class="pres-acc">' +
+        '<button class="pri" data-usar="' + i + '">Convertir en pedido</button>' +
+        '<button data-csv="' + i + '">Descargar CSV</button>' +
+        '<button data-borrar="' + i + '">Borrar</button>' +
+        '</div></div>';
+    }).join('');
+  }
+
+  function csvPresupuesto(q){
+    var filas = [['Presupuesto', q.ref], ['Fecha', q.fecha], ['Válido hasta', q.caduca]];
+    if(q.cliente) filas.push(['Cliente', q.cliente]);
+    if(q.promo)   filas.push(['Código promocional', q.promo]);
+    filas.push([]);
+    filas.push(['Referencia', 'Descripción', 'Marca', 'Uds.', 'Precio ud. sin IVA', 'Subtotal sin IVA']);
+    q.lineas.forEach(function(x){
+      var pr = byRef(x.ref);
+      filas.push([x.ref, pr ? pr.n : '', pr ? pr.marca : '', x.n,
+                  x.pu.toFixed(2).replace('.', ','), (x.pu * x.n).toFixed(2).replace('.', ',')]);
+    });
+    filas.push([]);
+    filas.push(['', '', '', '', 'Base imponible', q.base.toFixed(2).replace('.', ',')]);
+    filas.push(['', '', '', '', 'IVA 21 %', (q.base * IVA).toFixed(2).replace('.', ',')]);
+    filas.push(['', '', '', '', 'Total', (q.base * (1 + IVA)).toFixed(2).replace('.', ',')]);
+    var csv = '\ufeff' + filas.map(function(f){
+      return f.map(function(c){ return '"' + String(c).replace(/"/g, '""') + '"'; }).join(';');
     }).join('\r\n');
     var a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'}));
-    a.download = 'presupuesto-drd.csv';
+    a.download = q.ref + '.csv';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
-    say('Presupuesto descargado en CSV');
+    say('Descargado ' + q.ref + '.csv');
+  }
+
+  document.getElementById('presuList').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    if(b.dataset.csv !== undefined){ csvPresupuesto(presupuestos[+b.dataset.csv]); return; }
+    if(b.dataset.borrar !== undefined){
+      presupuestos.splice(+b.dataset.borrar, 1);
+      escribir('drd.presupuestos.v1', presupuestos);
+      renderPresupuestos(); say('Presupuesto borrado'); return;
+    }
+    if(b.dataset.usar !== undefined){
+      var q = presupuestos[+b.dataset.usar];
+      cart = {};
+      q.lineas.forEach(function(x){ if(byRef(x.ref)) cart[x.ref] = x.n; });
+      if(q.promo && PROMOS[q.promo]){ promo = q.promo; escribir('drd.promo.v1', promo); }
+      paint(); cerrarVentana(presuWin); openDrawer();
+      say(q.ref + ' recuperado en el pedido');
+    }
   });
+
+  document.getElementById('drGuardar').addEventListener('click', guardarPresupuesto);
 
   /* ==================== FICHA RÁPIDA ==================== */
   var modal = document.getElementById('modal'), mvRef = null;
@@ -1633,14 +1922,20 @@ BOM-H121M x 1</textarea>
     document.getElementById('mvAdd').disabled = (x.s === 'no');
     document.getElementById('mvAdd').textContent = x.s === 'no' ? 'Avisadme cuando llegue' : 'Añadir al pedido';
     document.getElementById('mvNote').textContent =
-      'Ficha técnica en PDF, despiece y recambios irían aquí. Medidas y stock de ejemplo para la demo.';
+      'Ficha técnica, despiece y recambios disponibles para descargar.';
+    if(!modal.classList.contains('on')) focoPrevio = document.activeElement;
     modal.classList.add('on'); scrim.classList.add('on');
     document.body.style.overflow = 'hidden';
+    document.getElementById('mvX').focus();
   }
   function closeModal(){
     modal.classList.remove('on');
-    if(!drawer.classList.contains('on')){ scrim.classList.remove('on'); document.body.style.overflow = ''; }
+    if(!drawer.classList.contains('on')){
+      scrim.classList.remove('on'); document.body.style.overflow = '';
+      if(focoPrevio && focoPrevio.focus){ focoPrevio.focus(); focoPrevio = null; }
+    }
   }
+  modal.addEventListener('keydown', function(e){ atrapaFoco(modal.querySelector('.modal-card'), e); });
   document.getElementById('mvX').addEventListener('click', closeModal);
   modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
   document.getElementById('mvPlus').addEventListener('click', function(){
@@ -1780,7 +2075,9 @@ BOM-H121M x 1</textarea>
 
   /* ==================== PINTADO GLOBAL ==================== */
   function paint(){
+    guardar();
     cc.textContent = cartUnits();
+    cc.setAttribute('aria-label', cartUnits() + (cartUnits() === 1 ? ' unidad' : ' unidades') + ' en el pedido');
     renderGrid();
     renderDrawer();
   }
@@ -1936,21 +2233,75 @@ BOM-H121M x 1</textarea>
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Escape') return;
     box.hidden = true;
-    if(modal.classList.contains('on')) closeModal();
+    if(login.classList.contains('on')) cerrarVentana(login);
+    else if(presuWin.classList.contains('on')) cerrarVentana(presuWin);
+    else if(modal.classList.contains('on')) closeModal();
     else if(drawer.classList.contains('on')) closeDrawer();
   });
 
-  document.getElementById('cuenta').addEventListener('click', function(){
-    say('Área profesional: tarifa propia, albaranes y pago a 30 días');
+  /* ==================== VENTANAS Y SESIÓN ==================== */
+  function abrirVentana(el){
+    focoPrevio = document.activeElement;
+    el.classList.add('on'); scrim.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    var f = el.querySelector(FOCABLES); if(f) f.focus();
+  }
+  function cerrarVentana(el){
+    el.classList.remove('on');
+    if(!drawer.classList.contains('on') && !document.querySelector('.modal.on')){
+      scrim.classList.remove('on'); document.body.style.overflow = '';
+      if(focoPrevio && focoPrevio.focus){ focoPrevio.focus(); focoPrevio = null; }
+    }
+  }
+  var login = document.getElementById('login');
+  [login, presuWin].forEach(function(v){
+    v.addEventListener('keydown', function(e){ atrapaFoco(v.querySelector('.modal-card'), e); });
+    v.addEventListener('click', function(e){ if(e.target === v) cerrarVentana(v); });
   });
-  document.getElementById('presu').addEventListener('click', function(){
-    say('Presupuestos guardados, versionados y convertibles en pedido');
+  document.getElementById('loginX').addEventListener('click', function(){ cerrarVentana(login); });
+  document.getElementById('presuX').addEventListener('click', function(){ cerrarVentana(presuWin); });
+
+  function pintaSesion(){
+    document.body.classList.toggle('identificado', !!sesion);
+    if(sesion){
+      var c = CLIENTES[sesion.cod];
+      document.getElementById('cbNombre').textContent = c.nombre;
+      document.getElementById('cbDto').textContent = '−' + Math.round(c.dto * 100) + ' %';
+      document.querySelector('#cuenta span').textContent = c.nombre.split(' ')[0];
+    }else{
+      document.querySelector('#cuenta span').textContent = 'Mi cuenta';
+    }
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var cod = (document.getElementById('loginCod').value || '').trim().toUpperCase();
+    var err = document.getElementById('loginErr');
+    if(!CLIENTES[cod]){ err.classList.add('on'); return; }
+    err.classList.remove('on');
+    sesion = {cod: cod};
+    escribir('drd.sesion.v1', sesion);
+    pintaSesion(); paint(); cerrarVentana(login);
+    say('Hola, ' + CLIENTES[cod].nombre + ' · tu tarifa ya está aplicada');
   });
-  document.getElementById('ctaDemo').addEventListener('click', function(){
-    say('Escribid a ventasonline@drdsll.com y montamos la demo con vuestro ERP');
+  document.getElementById('loginCod').addEventListener('input', function(){
+    document.getElementById('loginErr').classList.remove('on');
   });
 
+  document.getElementById('cbSalir').addEventListener('click', function(){
+    sesion = null; escribir('drd.sesion.v1', null);
+    pintaSesion(); paint(); say('Sesión cerrada');
+  });
+
+  document.getElementById('cuenta').addEventListener('click', function(){
+    if(sesion){ say(CLIENTES[sesion.cod].nombre + ' · tarifa −' + Math.round(CLIENTES[sesion.cod].dto * 100) + ' % · pago ' + CLIENTES[sesion.cod].pago); }
+    else{ abrirVentana(login); document.getElementById('loginCod').focus(); }
+  });
+  document.getElementById('presu').addEventListener('click', function(){
+    renderPresupuestos(); abrirVentana(presuWin);
+  });
   /* arranque */
+  pintaSesion();
   portes();
   paint();
 })();
